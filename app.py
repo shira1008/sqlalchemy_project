@@ -8,7 +8,7 @@ import requests
 # Create an instance of the Flask application after the imports.
 app = Flask(__name__)
 
-# the vsc dosent recognize a simple app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data/library.sqlite' so:
+# the vsc doesn't recognize a simple app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data/library.sqlite' so:
 
 # Get the absolute path to the current directory
 current_directory = os.path.dirname(os.path.abspath(__file__))
