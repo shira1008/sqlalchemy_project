@@ -1,5 +1,4 @@
 from flask import Flask, request, render_template, redirect, url_for
-from flask_sqlalchemy import SQLAlchemy
 from data_models import db, Author, Book
 from datetime import datetime
 from sqlalchemy import or_
@@ -10,9 +9,9 @@ import requests
 app = Flask(__name__)
 
 # the vsc dosent recognize a simple app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data/library.sqlite' so:
+
 # Get the absolute path to the current directory
 current_directory = os.path.dirname(os.path.abspath(__file__))
-
 
 # Construct the absolute path to the database file inside the 'data' folder
 db_path = os.path.join(current_directory, 'data', 'library.sqlite')
