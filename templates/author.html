@@ -8,7 +8,7 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='style.css') }}"
     />
-    <title>Book Details - {{ book.title }}</title>
+    <title>Author Details - {{ author.name }}</title>
   </head>
   <body>
     <div class="book_section">
@@ -17,17 +17,19 @@
       <a href="{{ url_for('home') }}">back home</a>
       {% else %}
       <div class="books">
-        <div class="book-container">
-          <h2>{{ book.title }}</h2>
-          <p>Author: {{ author_names[book.author_id] }}</p>
-          <p>ISBN: {{ book.isbn }}</p>
-          <p>Publication Year: {{ book.publication_year }}</p>
-
-          <img
-            src="{{ book_covers[book.isbn] }}"
-            alt="{{ book.title }}"
-            style="width: 100px; height: 150px"
-          />
+        <div class="author-container book-container">
+          <h2>{{ author.name }}'s books:</h2>
+          <div class="author-content">
+            <ul>
+              {% for book in books_by_author %}
+              <li>
+                <a href="{{ url_for('book_detail', book_id=book.id) }}"
+                  >{{ book.title }}</a
+                >
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
         </div>
       </div>
     </div>

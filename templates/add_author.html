@@ -1,26 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
 
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='add_css.css') }}"
+    />
   </head>
   <body>
-  {% if success_message %}
-        <p>{{ success_message }}</p>
-    {% endif %}
-  <form action="/add_author" method="POST">
-  <label for="name">Author Name:</label> 
-  <input type="text" id="name" name="name" required><br><br>
-  
-  <label for="birthdate">Birthdate:</label> 
-  <input type="date" id="birthdate" name="birth_date" required><br><br>
-  <label for="date_of_death">Date of Death:</label> 
-  <input type="date" id="date_of_death" name="date_of_death"><br><br>
-  <input type="submit" value="Add Author"> 
-  </form>
+    <div class="wrapper">
+      {% if success_message %}
+      <p>{{ success_message }}</p>
+      {% endif %}
+      <div class="container">
+        <form action="/add_author" method="POST" class="form-container">
+          <div class="form-group">
+            <label for="name" class="form-label">Author Name:</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="form-input"
+              required
+            /><br /><br />
+          </div>
 
+          <div class="form-group">
+            <label for="birthdate" class="form-label">Birthdate:</label>
+            <input
+              type="date"
+              id="birthdate"
+              name="birth_date"
+              class="form-input"
+              required
+            /><br /><br />
+          </div>
+
+          <div class="form-group">
+            <label for="date_of_death" class="form-label">Date of Death:</label>
+            <input
+              type="date"
+              id="date_of_death"
+              name="date_of_death"
+              class="form-input"
+            /><br /><br />
+          </div>
+
+          <button type="submit" class="form-btn">Add Author</button>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

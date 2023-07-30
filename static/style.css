@@ -1,69 +1,168 @@
-    
-     body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-        }
-        h1 {
-            text-align: center;
-        }
-        form {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        select, input[type="text"], input[type="submit"] {
-            padding: 5px;
-            font-size: 16px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        img {
-            display: block;
-            margin: 10px auto;
-            max-width: 100px;
-            max-height: 150px;
-        }
+@import url("https://fonts.googleapis.com/css?family=Saira+Semi+Condensed&display=swap");
 
-        .books{
-          display: flex;
-          justify-content: center;
-          flex-wrap: wrap;
-        }
+:root {
+  --font_family: "Saira Semi Condensed", sans-serif;
+  --background-color: #272727;
+  --text-color: #f0f0f0;
+  --primary-color: #7bc1fa;
+  --primary-color-variant: #ffffff;
+  --secondary-color: #ff615c;
+  --accent-color: #67cfc5;
+  --surface-color: #424242;
 
-        .book-container {
-            border: 1px solid #cccccc;
-            padding: 10px;
-            margin: 10px;
-           min-width:  450px;
-           
-        }
-        .btn-container {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .btn-container button {
-            margin: 5px;
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #007bff;
-            color: #ffffff;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .btn-container button:hover {
-            background-color: #0056b3;
-        }
-        .error-message {
-            color: #ff0000;
-            text-align: center;
-        }
+  --on-surface-color: #f0f0f0;
+  --error-color: #ef5350;
+
+  --max-width: 1120px;
+
+  --fixed-width: 600px;
+}
+
+body {
+  font-family: var(--font_family);
+  padding: 20px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+.form_home {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-container {
+  width: 90vw;
+  max-width: var(--fixed-width);
+  margin: 1rem auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid var(--on-surface-color);
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: var(--surface-color);
+}
+
+img {
+  display: block;
+  margin: 10px auto;
+  max-width: 100px;
+  max-height: 150px;
+}
+
+.books {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.book-container {
+  border: 1px solid transparent;
+  background-color: var(--surface-color);
+  padding: 10px;
+  margin: 10px;
+  min-width: 450px;
+  text-align: center;
+  max-width: 350px;
+}
+
+.btn-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.btn-search {
+  cursor: pointer;
+  background-color: var(--accent-color) !important;
+  border: 1px solid var(--accent-color) !important;
+  color: var(--text-color);
+}
+
+.btn-container button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn-container button:hover {
+  background-color: var(--accent-color);
+}
+
+.error-message {
+  color: var(--error-color);
+  text-align: center;
+}
+
+.btn {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: var(--secondary-color) !important;
+  color: var(---text-color);
+  border: 1px solid var(--secondary-color) !important;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+select,
+input[type="text"],
+input[type="submit"] {
+  padding: 5px;
+  font-size: 16px;
+  background-color: var(--surface-color);
+  border: 1px solid var(--on-surface-color);
+  color: var(--text-color);
+}
+
+.form-flex {
+  max-width: 500px;
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+/* book.html , author.html*/
+.book_section {
+  padding-top: 8rem;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+a:hover {
+  color: var(--secondary-color);
+}
+
+a:focus {
+  outline: none;
+}
+
+.author-content {
+  text-align: start;
+}

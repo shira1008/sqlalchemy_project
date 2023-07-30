@@ -88,7 +88,7 @@ def add_book():
         except Exception as e:
             # Handle any errors that occur during the database transaction
             db.session.rollback()
-            success_message = "Failed to add book. Please try again."
+            success_message = "Failed to add book. Please try again ."
 
         # Render the add_book.html template with the success message
         return render_template('add_book.html', success_message=success_message, authors=Author.query.all())
@@ -106,6 +106,7 @@ def home():
   # get all the books from the db
   books = Book.query.all()
   #sort the books
+#   print("Fetched Books:", books)
 
   if sort_by == 'title':
     books = Book.query.order_by(Book.title).all()
@@ -155,6 +156,16 @@ def book_detail(book_id):
       return render_template('book.html', error_msg = error_msg, book = book, author_names = author_names,book_covers=book_covers)
    
 
+
+@app.route('/author/<int:author_id>')
+def author_detail(author_id):
+    author = Author.query.get(author_id)
+    if author:
+        books_by_author = Book.query.filter_by(author_id=author_id).all()
+        return render_template('author.html', author=author, books_by_author=books_by_author)
+    else:
+        error_msg = "Author not found."
+        return render_template('author.html', error_msg=error_msg, author=author, books_by_author=books_by_author)
 
 
 #https://amadeussupreme-societyparking-5002.codio.io/add_author

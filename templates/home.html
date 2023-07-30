@@ -8,21 +8,32 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='style.css') }}"
     />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='add_css.css') }}"
+    />
   </head>
   <body>
-    <form action="/" method="GET" class="btn-container">
+    <form
+      action="/"
+      method="GET"
+      class="form-container btn-container form_home form-flex"
+    >
       Sort by:
-      <select id="sort_by" name="sort_by">
+      <select id="sort_by" name="sort_by" class="form-input">
         <option value="title">Title</option>
         <option value="author">Author</option>
       </select>
-      <input type="submit" value="Sort" />
+      <input type="submit" value="Sort" class="form-btn btn-search" />
     </form>
 
-    <form action="/" method="GET" class="btn-container">
-      <label for="search">Search Books:</label>
-      <input type="text" id="search" name="search" />
-      <input type="submit" value="Search" />
+    <!-- End of the wrapper -->
+
+    <form action="/" method="GET" class="form-container form_home form-flex">
+      <label for="search" class="form-label">Search Books:</label>
+      <input type="text" id="search" name="search" class="form-input" />
+
+      <input type="submit" value="Search" class="form-btn btn-search" />
     </form>
 
     <!-- Add Author Button -->
@@ -49,14 +60,18 @@
             >{{ book.title }}</a
           >
         </h3>
-        <p>Author: {{ author_names[book.author_id] }}</p>
+        <p>
+          <a href="{{ url_for('author_detail', author_id=book.author_id) }}"
+            >Author: {{ author_names[book.author_id] }}</a
+          >
+        </p>
         <!-- Add the book cover image here using the book_covers dictionary -->
         <img src="{{ book_covers[book.isbn] }}" alt="{{ book.title }}" />
         <form
           action="{{ url_for('delete_book', book_id=book.id) }}"
           method="post"
         >
-          <input type="submit" value="Delete" />
+          <input type="submit" value="Delete" class="btn" />
         </form>
       </div>
       {% endfor %} {% endif %}

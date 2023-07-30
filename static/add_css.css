@@ -1,0 +1,131 @@
+body {
+  font-family: var(--font_family);
+  background: var(--background-color);
+  color: var(--text-color);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  padding: 0 16px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  max-width: var(--max-width);
+
+  margin: 0 auto; /* Center the wrapper */
+}
+
+form {
+  max-width: var(--fixed-width);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-group {
+  width: 100%;
+}
+
+.form-input {
+  padding: 10px;
+  font-size: 16px;
+  width: 100%;
+  background-color: var(--surface-color);
+  border: none;
+  border-radius: 4px;
+  color: var(--text-color);
+}
+
+.form-input::placeholder {
+  color: var(--text-color);
+}
+
+.form-input:focus {
+  outline: none;
+  background-color: transparent;
+}
+
+textarea {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  resize: none;
+  background-color: var(--surface-color);
+  border: none;
+  border-radius: 4px;
+  color: var(--text-color);
+}
+
+textarea::placeholder {
+  color: var(--text-color);
+}
+
+textarea:focus {
+  outline: none;
+  background-color: var(--on-surface-color);
+}
+
+button {
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+button:hover {
+  letter-spacing: 2px;
+  background-color: var(--secondary-color);
+}
+
+/* Additional Styling */
+.form-group:nth-of-type(2) {
+  margin: 16px 0;
+}
+
+.form-btn {
+  font-size: 16px;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  padding: 10px 20px;
+  margin: 16px 0;
+}
+
+.form-btn:hover {
+  letter-spacing: 2px;
+  background-color: var(--secondary-color);
+}
+
+select {
+  padding: 10px;
+  font-size: 16px;
+  width: 100%;
+  background-color: var(--surface-color);
+  border: none;
+  border-radius: 4px;
+  color: var(--text-color);
+}
+
+/* Style the options within the select element */
+select option {
+  background-color: var(--surface-color);
+  color: var(--text-color);
+}
+
+/* Media Query for Mobile */
+@media (max-width: 425px) {
+  form {
+    width: 100%;
+  }
+}
