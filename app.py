@@ -25,8 +25,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_path}'
 db.init_app(app)
 
 
-# fetch img by ISBN 
+
 def get_book_cover(isbn):
+    """fetch img by ISBN """
     url = f'https://www.googleapis.com/books/v1/volumes?q=isbn:{isbn}'
     response = requests.get(url)
     if response.status_code == 200:
@@ -39,6 +40,7 @@ def get_book_cover(isbn):
 
 @app.route('/add_author', methods=['GET', 'POST'])
 def add_author():
+    """ Adding new author to the DB"""
     if request.method == "POST":
         name = request.form['name']
         birth_date_str = request.form['birth_date']  # Get date as string
@@ -72,6 +74,7 @@ def add_author():
 
 @app.route('/add_book', methods=['GET', 'POST'])
 def add_book():
+    """ Adding new book to the DB"""
     if request.method == "POST":
         isbn = request.form['isbn']
         title = request.form['title']
@@ -99,6 +102,7 @@ def add_book():
 
 @app.route('/')
 def home():
+  """The home page route, show all the books in the DB"""
   search_query = request.args.get('search', '')
   # added sort 
   sort_by = request.args.get('sort_by', 'title') # deafult sort by title
@@ -132,6 +136,7 @@ def home():
 
 @app.route('/book/<int:book_id>/delete', methods=['POST'])
 def delete_book(book_id):
+    """ delete a book by its id """
     book = Book.query.get(book_id)
     if book:
         db.session.delete(book)
@@ -142,9 +147,10 @@ def delete_book(book_id):
     return redirect(url_for('home'))
 
 
-# details about a book by its id 
+
 @app.route('/book/<int:book_id>')
 def book_detail(book_id):
+    """ Displaying details of a book by its id in a new HTML file"""
     books = Book.query.all()
     book = Book.query.get(book_id)
     author_names = {author.id: author.name for author in Author.query.all()}
@@ -159,6 +165,8 @@ def book_detail(book_id):
 
 @app.route('/author/<int:author_id>')
 def author_detail(author_id):
+    """ Displaying details of an author based on their ID in a new HTML file"""
+
     author = Author.query.get(author_id)
     if author:
         books_by_author = Book.query.filter_by(author_id=author_id).all()
