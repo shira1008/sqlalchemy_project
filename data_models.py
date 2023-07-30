@@ -30,7 +30,6 @@ class Book(db.Model):
         return f"Book: {self.title}, ISBN: {self.isbn}, Publication Year: {self.publication_year}, Author ID: {self.author_id}"
 
 # if __name__ == '__main__':
-#     # Import your Flask app here to ensure the db instance is attached to it
 #     from app import app
 
 #     # Initialize the SQLAlchemy extension with the Flask app
