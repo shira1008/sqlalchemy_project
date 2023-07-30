@@ -1,53 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-  <form action="/" method="GET" class="btn-container">
-    Sort by:
-    <select id="sort_by" name="sort_by">
-      <option value="title">Title</option>
-      <option value="author">Author</option>
-    </select>
-    <input type="submit" value="Sort">
-  </form>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <form action="/" method="GET" class="btn-container">
+      Sort by:
+      <select id="sort_by" name="sort_by">
+        <option value="title">Title</option>
+        <option value="author">Author</option>
+      </select>
+      <input type="submit" value="Sort" />
+    </form>
 
-  <form action="/" method="GET" class="btn-container">
-    <label for="search">Search Books:</label>
-    <input type="text" id="search" name="search">
-    <input type="submit" value="Search">
-  </form>
+    <form action="/" method="GET" class="btn-container">
+      <label for="search">Search Books:</label>
+      <input type="text" id="search" name="search" />
+      <input type="submit" value="Search" />
+    </form>
 
-  <!-- Add Author Button -->
-  <div class="btn-container">
-    <a href="{{ url_for('add_author') }}"><button class="add-author-btn">Add New Author</button></a>
-  </div>
+    <!-- Add Author Button -->
+    <div class="btn-container">
+      <a href="{{ url_for('add_author') }}"
+        ><button class="add-author-btn">Add New Author</button></a
+      >
+    </div>
 
-  <!-- Add Book Button -->
-  <div class="btn-container">
-    <a href="{{ url_for('add_book') }}"><button class="add-book-btn">Add New Book</button></a>
-  </div>
+    <!-- Add Book Button -->
+    <div class="btn-container">
+      <a href="{{ url_for('add_book') }}"
+        ><button class="add-book-btn">Add New Book</button></a
+      >
+    </div>
 
-   <div class="books">
-    {% if error_message %}
+    <div class="books">
+      {% if error_message %}
       <p class="error-message">{{ error_message }}</p>
-    {% else %}
-      {% for book in books %}
+      {% else %} {% for book in books %}
       <div class="book-container">
-        <h3>{{ book.title }}</h3>
+        <h3>
+          <a href="{{ url_for('book_detail', book_id=book.id) }}"
+            >{{ book.title }}</a
+          >
+        </h3>
         <p>Author: {{ author_names[book.author_id] }}</p>
         <!-- Add the book cover image here using the book_covers dictionary -->
-        <img src="{{ book_covers[book.isbn] }}" alt="{{ book.title }}">
-        <form action="{{ url_for('delete_book', book_id=book.id) }}" method="post">
-          <input type="submit" value="Delete">
+        <img src="{{ book_covers[book.isbn] }}" alt="{{ book.title }}" />
+        <form
+          action="{{ url_for('delete_book', book_id=book.id) }}"
+          method="post"
+        >
+          <input type="submit" value="Delete" />
         </form>
       </div>
-      {% endfor %}
-    {% endif %}
-  </div>
-</body>
+      {% endfor %} {% endif %}
+    </div>
+  </body>
 </html>

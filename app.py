@@ -141,6 +141,21 @@ def delete_book(book_id):
     return redirect(url_for('home'))
 
 
+# details about a book by its id 
+@app.route('/book/<int:book_id>')
+def book_detail(book_id):
+    books = Book.query.all()
+    book = Book.query.get(book_id)
+    author_names = {author.id: author.name for author in Author.query.all()}
+    book_covers = {book.isbn: get_book_cover(book.isbn) for book in books}
+    if book:
+        return render_template('book.html', book = book, author_names = author_names,book_covers=book_covers )
+    else:
+      error_msg = "Book not found"
+      return render_template('book.html', error_msg = error_msg, book = book, author_names = author_names,book_covers=book_covers)
+   
+
+
 
 #https://amadeussupreme-societyparking-5002.codio.io/add_author
 if __name__ == '__main__':
