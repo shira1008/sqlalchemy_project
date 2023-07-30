@@ -3,6 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 class Author(db.Model):
+    """Represents an Author in the database."""
+
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(100), nullable=False)
     birth_date = db.Column(db.Date)
@@ -16,6 +18,8 @@ class Author(db.Model):
 
 
 class Book(db.Model):
+    """Represents a Book in the database."""
+    
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     isbn = db.Column(db.String(20), nullable=False, unique=True)
     title = db.Column(db.String(255), nullable=False)
